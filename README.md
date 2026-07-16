@@ -1,72 +1,93 @@
-# 🍔 Restaurant Ordering System
+<p align="center">
+  <img src="logo.png" alt="Jomnum Tech Logo" width="220"/>
+</p>
 
-A simple Java console application that simulates a restaurant ordering system. Users can select menu items, enter quantities, and receive a receipt with the subtotal, VAT, and grand total.
+<h1 align="center">🍔 Restaurant Ordering System</h1>
 
-## 📖 Project Description
+<p align="center">
+A simple Java console application that simulates a restaurant ordering system.
+Users can order food, calculate the bill automatically, and print a receipt including VAT and Grand Total.
+</p>
 
-This project was developed as part of a Java programming assignment to practice fundamental programming concepts such as:
+<p align="center">
 
-- Variables and constants
-- Methods
-- Switch statements
-- Loops
-- User input
-- Mathematical calculations
+![Java](https://img.shields.io/badge/Java-17-orange?logo=java)
+![License](https://img.shields.io/badge/License-Educational-blue)
+![Status](https://img.shields.io/badge/Status-Completed-brightgreen)
 
-The application allows customers to order food from a menu and automatically calculates the final bill.
+</p>
 
 ---
 
-## 🍽️ Menu
+# 📖 Project Description
+
+This project was developed as part of a **Java Programming Assignment** at the **Royal University of Phnom Penh (RUPP)**.
+
+The goal of this project is to practice Java programming fundamentals by building a restaurant ordering system that allows users to:
+
+- Display a food menu
+- Select food items
+- Enter quantities
+- Calculate totals automatically
+- Calculate VAT (10%)
+- Print a receipt
+- Continue ordering until exiting the program
+
+---
+
+# 🍽️ Menu
 
 | Item | Price |
 |------|------:|
-| Burger | $5 |
-| Pizza | $8 |
-| Fried Chicken | $6 |
-| Soft Drink | $2 |
+| 🍔 Burger | $5 |
+| 🍕 Pizza | $8 |
+| 🍗 Fried Chicken | $6 |
+| 🥤 Soft Drink | $2 |
 
 ---
 
-## ✨ Features
+# ✨ Features
 
 - Display restaurant menu
-- Select food items
-- Enter quantity for each item
+- Select menu items
+- Enter item quantity
 - Calculate item total
 - Calculate subtotal
 - Calculate 10% VAT
 - Calculate grand total
-- Print a detailed receipt
-- Repeat ordering until the user chooses to exit
+- Print formatted receipt
+- Repeat ordering until the user exits
 
 ---
 
-## 🛠️ Methods
-
-The project includes the following methods:
+# 🛠️ Methods
 
 ### `displayMenu()`
-Displays the list of available food items and prices.
+
+Displays the restaurant menu.
 
 ### `calculateItemTotal()`
-Calculates the total price for each selected menu item.
+
+Calculates the total price of each selected item.
 
 ### `calculateVAT()`
+
 Calculates 10% VAT based on the subtotal.
 
 ### `printReceipt()`
-Displays the customer's order summary including:
+
+Prints a detailed receipt including:
+
 - Ordered items
 - Quantity
 - Item total
 - Subtotal
-- VAT (10%)
+- VAT
 - Grand Total
 
 ---
 
-## 🧮 Calculation
+# 🧮 Calculation
 
 ```
 Subtotal = Sum of all ordered items
@@ -79,26 +100,27 @@ Grand Total = Subtotal + VAT
 Example:
 
 ```
-Subtotal:    $20.00
-VAT (10%):   $2.00
--------------------
-Grand Total: $22.00
+Subtotal    : $20.00
+VAT (10%)   : $2.00
+-----------------------
+Grand Total : $22.00
 ```
 
 ---
 
-## 📂 Project Structure
+# 📂 Project Structure
 
 ```
 RestaurantOrderingSystem/
 │
 ├── RestaurantOrderingSystem.java
-└── README.md
+├── README.md
+└── logo.png
 ```
 
 ---
 
-## ▶️ How to Run
+# ▶️ How to Run
 
 ### Compile
 
@@ -114,9 +136,9 @@ java RestaurantOrderingSystem
 
 ---
 
-## 💻 Sample Output
+# 💻 Sample Output
 
-```
+```text
 ========== RESTAURANT MENU ==========
 1. Burger          $5
 2. Pizza           $8
@@ -126,38 +148,52 @@ java RestaurantOrderingSystem
 Choose an item: 2
 Quantity: 3
 
-Subtotal : $24.00
-VAT (10%): $2.40
-Grand Total: $26.40
+Subtotal    : $24.00
+VAT (10%)   : $2.40
+Grand Total : $26.40
 ```
 
 ---
 
-## 🎯 Learning Objectives
+# 🎯 Learning Objectives
 
-This project demonstrates:
+This project demonstrates the use of:
 
-- Java methods
-- Switch-case statements
+- Java Methods
+- Switch Statements
 - Loops (`do-while`)
-- Variables and constants
-- User input using `Scanner`
-- Basic arithmetic calculations
-- Console output formatting
+- Variables and Constants
+- User Input (`Scanner`)
+- Basic Arithmetic Calculations
+- Console Output Formatting
 
 ---
 
-## 👨‍💻 Author
+# 👨‍🏫 Instructor
 
-**Mi Ly Heng**
+**Ing. Davann**
+
+Java Programming Course
 
 Royal University of Phnom Penh (RUPP)
 
+---
+
+# 👨‍💻 Author
+
+**Mi Ly Heng**
+
 Information Technology Engineering
+
+Royal University of Phnom Penh (RUPP)
+
+GitHub: **Heng-zio**
 
 ---
 
-## 📜 License
+# 📜 License
 
-This project is created for educational purposes.
->>>>>>> acc848edf28192c49c69201679052fd9953e2fa7
+This project was created for **educational purposes only**.
+
+---
+
