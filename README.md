@@ -197,3 +197,7 @@ This project was created for **educational purposes only**.
 
 ---
 
+<p align="center">
+<b>JOMNUM TECH</b><br>
+Moving Forward Together in the Age of Technology
+</p>
