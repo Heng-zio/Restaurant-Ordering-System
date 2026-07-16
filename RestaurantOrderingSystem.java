@@ -1,294 +1,180 @@
 import java.util.Scanner;
+
 public class RestaurantOrderingSystem {
-<<<<<<< HEAD
-public static int Burger;
-public static int Pizza;
-public static int friedChicken;
-public static int softDrink;
 
-//Menu
-public static void displayMenu(){
-    System.out.println("1. Burger - $5");
-    System.out.println("2. Pizza - $8");
-    System.out.println("3. Fried Chicken - $6");
-    System.out.println("4. Soft Drink - $2");
-    System.out.println("5. To Exit");
-}
+    // Item quantities
+    public static int burgerQty = 0;
+    public static int pizzaQty = 0;
+    public static int friedChickenQty = 0;
+    public static int softDrinkQty = 0;
 
-//User order
-public static double SelectItem(Scanner input) {
-    int subtotal = 0;
-    int quantity;
-    int choice;
-    do {
-    System.out.print("Choose an Item (1-5) : ");
-    choice = input.nextInt();
-    switch (choice){
-        case 1: 
-                System.out.print("Enter quantity: ");
-                quantity = input.nextInt();
-                Burger = quantity;
-                subtotal += calculateItemTotal( 5 , quantity);
-                break;
-        case 2: 
-                System.out.print("Enter quantity: ");
-                quantity = input.nextInt();
-                Pizza = quantity;
-                subtotal += calculateItemTotal( 8 , quantity);
-                break;
-        case 3: 
-                System.out.print("Enter quantity: ");
-                quantity = input.nextInt();
-                friedChicken = quantity;
-                subtotal += calculateItemTotal(6 , quantity);
-                break;
-        case 4:
-                System.out.print("Enter quantity: ");
-                quantity = input.nextInt();
-                softDrink = quantity;
-                subtotal += calculateItemTotal( 2 , quantity);
-                break;
-        case 5:
-                System.out.println("Ordering Finished.");
-                break;
+    // Prices
+    public static final double BURGER_PRICE = 5.0;
+    public static final double PIZZA_PRICE = 8.0;
+    public static final double FRIED_CHICKEN_PRICE = 6.0;
+    public static final double SOFT_DRINK_PRICE = 2.0;
 
-            default:
-                System.out.println("Invalid choice. Please try again.");
-        }
-    } while(choice != 5);
-
-    return subtotal;
-}
-
-//Calculate totals 
-public static double calculateItemTotal(double price , double quantity) {
-    return price * quantity;
-}
-
-// calculate Value Added Tax 10%
-public static double calculateVAT(double subtotal) {
-    return subtotal * 0.10;
-}
-
-//calulate price each items
-public static double calculateItemPrice(int item, double priceItem) {
-    return item * priceItem;
-}
-
-//Print Receipt
-public static void printReceipt(double subtotal, double vat, double finalTotal) {
-    double subtotalLast = subtotal;
-    vat = calculateVAT(subtotalLast);
-    finalTotal = subtotalLast + vat;
-    double price1 = calculateItemPrice(Burger,5);
-    double price2 = calculateItemPrice(Pizza,8);
-    double price3 = calculateItemPrice(friedChicken,6);
-    double price4 = calculateItemPrice(softDrink,2);
-
-    System.out.println("\n========== RECEIPT ==========");
-    System.out.printf("Burger        x%d $%.2f%n", Burger, price1);
-    System.out.printf("Pizza         x%d $%.2f%n", Pizza, price2);
-    System.out.printf("Fried Chicken x%d $%.2f%n", friedChicken, price3);
-    System.out.printf("Soft Drink    x%d $%.2f%n", softDrink, price4);
-    System.out.println("");
-    System.out.println("==============================");
-    System.out.println("");
-    System.out.printf("Subtotal:         $%.2f\n", subtotalLast);
-    System.out.printf("VAT (10%%):        $%.2f\n", vat);
-    System.out.printf("Grand Total:      $%.2f\n", finalTotal);
-    System.out.println("");
-    System.out.println("==============================");
-}
-
-public static void main (String[] args){
-    Scanner input = new Scanner(System.in);
-    double subtotal = 0;
-    double vat = 0;
-    double finalTotal = 0;
-    char choice;  
-
-do {
-
-    //user input
-    System.out.println("");
-    System.out.println("========== MENU ==========");
-    System.out.println("");
-    System.out.println("a. Display Food Menu.");
-    System.out.println("b. Calculat Total.");
-    System.out.println("c. Calculate VAT.");
-    System.out.println("d. Display Food Menu.");
-    System.out.println("e. Exit Ordering.");
-    System.out.print("Choose your choice: ");
-    choice = input.next().charAt(0); 
-    System.out.println("");
-    switch (choice) {
-        case 'a':
-            displayMenu();
-            subtotal = SelectItem(input);
-            System.out.println("=== Your Order ===");
-            System.out.println("Burger x" + Burger);
-            System.out.println("Pizza x" + Pizza);
-            System.out.println("Fried Chicken x" + friedChicken);
-            System.out.println("Soft Drink x" + softDrink);
-
-            break;
-        case 'b':
-            // subtotal = SelectItem(input);
-            System.out.println("Total price : $" + subtotal);
-            break;
-        case 'c':
-            System.out.println("Calculate VAT $: " + calculateVAT(subtotal));
-            break;
-        case 'd':
-
-            printReceipt( subtotal, vat, finalTotal);
-            break;
-        case 'e':
-            System.out.println("Good Bye See You Later.");
-            break;
-        } 
-    } while (choice != 'e');
-    input.close();
-}
-=======
-    public static int Burger;
-    public static int Pizza;
-    public static int friedChicken;
-    public static int softDrink;
-    //Menu
-    public static void displayMenu(){
+    // Display menu
+    public static void displayMenu() {
+        System.out.println("\n====== FOOD MENU ======");
         System.out.println("1. Burger - $5");
         System.out.println("2. Pizza - $8");
         System.out.println("3. Fried Chicken - $6");
         System.out.println("4. Soft Drink - $2");
-        System.out.println("5. To Exit");
-
+        System.out.println("5. Finish Ordering");
     }
 
-    //User order
-    public static double SelectItem(Scanner input) {
-        int subtotal = 0;
-        int quantity;
+    // Select items
+    public static double selectItem(Scanner input) {
+
+        double subtotal = 0;
         int choice;
+
         do {
-        System.out.print("Choose an Item (1-5) : ");
-        choice = input.nextInt();
-        switch (choice){
-            case 1: 
+            System.out.print("\nChoose an Item (1-5): ");
+            choice = input.nextInt();
+
+            switch (choice) {
+
+                case 1:
                     System.out.print("Enter quantity: ");
-                    quantity = input.nextInt();
-                    Burger = quantity;
-                    subtotal += calculateItemTotal( 5 , quantity);
+                    burgerQty = input.nextInt();
+                    subtotal += calculateItemTotal(BURGER_PRICE, burgerQty);
                     break;
-            case 2: 
+
+                case 2:
                     System.out.print("Enter quantity: ");
-                    quantity = input.nextInt();
-                    Pizza = quantity;
-                    subtotal += calculateItemTotal( 8 , quantity);
+                    pizzaQty = input.nextInt();
+                    subtotal += calculateItemTotal(PIZZA_PRICE, pizzaQty);
                     break;
-            case 3: 
+
+                case 3:
                     System.out.print("Enter quantity: ");
-                    quantity = input.nextInt();
-                    friedChicken = quantity;
-                    subtotal += calculateItemTotal(6 , quantity);
+                    friedChickenQty = input.nextInt();
+                    subtotal += calculateItemTotal(FRIED_CHICKEN_PRICE, friedChickenQty);
                     break;
-            case 4:
+
+                case 4:
                     System.out.print("Enter quantity: ");
-                    quantity = input.nextInt();
-                    softDrink = quantity;
-                    subtotal += calculateItemTotal( 2 , quantity);
+                    softDrinkQty = input.nextInt();
+                    subtotal += calculateItemTotal(SOFT_DRINK_PRICE, softDrinkQty);
                     break;
-            case 5:
+
+                case 5:
                     System.out.println("Ordering Finished.");
                     break;
 
                 default:
-                    System.out.println("Invalid choice. Please try again.");
+                    System.out.println("Invalid choice!");
             }
-        } while(choice != 5);
+
+        } while (choice != 5);
 
         return subtotal;
     }
 
-    //Calculate totals 
-    public static double calculateItemTotal(double price , double quantity) {
+    // Calculate total of one item
+    public static double calculateItemTotal(double price, int quantity) {
         return price * quantity;
     }
 
-    // calculate Value Added Tax 10%
+    // Calculate VAT
     public static double calculateVAT(double subtotal) {
         return subtotal * 0.10;
     }
 
-    //Print Receipt
-    public static void printReceipt(double subtotal, double vat, double finalTotal) {
-        subtotal = calculateVAT(subtotal);
-        vat = calculateVAT(subtotal);
-        finalTotal = subtotal + vat;
+    // Print receipt
+    public static void printReceipt(double subtotal) {
+
+        double vat = calculateVAT(subtotal);
+        double grandTotal = subtotal + vat;
 
         System.out.println("\n========== RECEIPT ==========");
-        System.out.println("Burger x" + Burger + " $" + Burger * 5);
-        System.out.println("Pizza x" + Pizza + " $" + Pizza * 8);
-        System.out.println("Fried Chicken x" + friedChicken + " $" + friedChicken * 6);
-        System.out.println("Soft Drink x" + softDrink + " $" + softDrink * 2);
-        System.out.println("");
-        System.out.println("===============================");
-        System.out.println("");
-        System.out.printf("Subtotal : $%.2f\n", subtotal);
-        System.out.printf("VAT (10%%): $%.2f\n", vat);
-        System.out.printf("Grand Total: $%.2f\n", finalTotal);
-        System.out.println("=============================");
+
+        System.out.printf("Burger         x%-3d $%.2f%n",
+                burgerQty,
+                calculateItemTotal(BURGER_PRICE, burgerQty));
+
+        System.out.printf("Pizza          x%-3d $%.2f%n",
+                pizzaQty,
+                calculateItemTotal(PIZZA_PRICE, pizzaQty));
+
+        System.out.printf("Fried Chicken  x%-3d $%.2f%n",
+                friedChickenQty,
+                calculateItemTotal(FRIED_CHICKEN_PRICE, friedChickenQty));
+
+        System.out.printf("Soft Drink     x%-3d $%.2f%n",
+                softDrinkQty,
+                calculateItemTotal(SOFT_DRINK_PRICE, softDrinkQty));
+
+        System.out.println("--------------------------------");
+
+        System.out.printf("Subtotal:      $%.2f%n", subtotal);
+        System.out.printf("VAT (10%%):     $%.2f%n", vat);
+        System.out.printf("Grand Total:   $%.2f%n", grandTotal);
+
+        System.out.println("================================");
     }
 
-    public static void main (String[] args){
+    public static void main(String[] args) {
+
         Scanner input = new Scanner(System.in);
+
         double subtotal = 0;
-        double vat = 0;
-        double finalTotal = 0;
-        char choice;  
+        char choice;
 
-    do {
+        do {
 
-        //user input
-        System.out.println("");
-        System.out.println("========== MENU ==========");
-        System.out.println("");
-        System.out.println("a. Display Food Menu.");
-        System.out.println("b. Calculat Total.");
-        System.out.println("c. Calculate VAT.");
-        System.out.println("d. Display Food Menu.");
-        System.out.println("e. Exit Ordering.");
-        System.out.print("Choose your choice: ");
-        choice = input.next().charAt(0); 
-        System.out.println("");
-        switch (choice) {
-            case 'a':
-                displayMenu();
-                subtotal = SelectItem(input);
-                System.out.println("=== Your Order ===");
-                System.out.println("Burger x" + Burger);
-                System.out.println("Pizza x" + Pizza);
-                System.out.println("Fried Chicken x" + friedChicken);
-                System.out.println("Soft Drink x" + softDrink);
+            System.out.println("\n========== MENU ==========");
+            System.out.println("a. Display Food Menu / Order");
+            System.out.println("b. Calculate Total");
+            System.out.println("c. Calculate VAT");
+            System.out.println("d. Print Receipt");
+            System.out.println("e. Exit");
+            System.out.print("Choose your choice: ");
 
-                break;
-            case 'b':
-                // subtotal = SelectItem(input);
-                System.out.println("Total price : " + subtotal);
-                break;
-            case 'c':
-                System.out.println("Calculate VAT : " + calculateVAT(subtotal));
-                break;
-            case 'd':
+            choice = input.next().charAt(0);
 
-                printReceipt( subtotal, vat, finalTotal);
-                break;
-            case 'e':
-                System.out.println("Good Bye See You Later.");
-                break;
-            } 
-        } while (choice != 'e');
+            switch (choice) {
+
+                case 'a':
+                case 'A':
+                    displayMenu();
+                    subtotal = selectItem(input);
+
+                    System.out.println("\n=== Your Order ===");
+                    System.out.println("Burger x" + burgerQty);
+                    System.out.println("Pizza x" + pizzaQty);
+                    System.out.println("Fried Chicken x" + friedChickenQty);
+                    System.out.println("Soft Drink x" + softDrinkQty);
+                    break;
+
+                case 'b':
+                case 'B':
+                    System.out.printf("Total Price: $%.2f%n", subtotal);
+                    break;
+
+                case 'c':
+                case 'C':
+                    System.out.printf("VAT (10%%): $%.2f%n", calculateVAT(subtotal));
+                    break;
+
+                case 'd':
+                case 'D':
+                    printReceipt(subtotal);
+                    break;
+
+                case 'e':
+                case 'E':
+                    System.out.println("Good Bye. See You Later.");
+                    break;
+
+                default:
+                    System.out.println("Invalid choice.");
+            }
+
+        } while (choice != 'e' && choice != 'E');
+
         input.close();
     }
->>>>>>> acc848edf28192c49c69201679052fd9953e2fa7
 }
